@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectPodgotovka.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ProjectPodgotovka
         public MainWindow()
         {
             InitializeComponent();
+            Manager.MainFrame = MainFrame; // Присваиваем фрейму свойства класса Manager
+            MainFrame.Navigate(new EnterPage()); // Отображаем страницу в фрейме MainFrame
         }
     }
 }
