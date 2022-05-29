@@ -28,3 +28,5 @@ C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\DataGridPage.g.cs
 C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\DataGridPage.baml
 C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\ListViewPage.g.cs
 C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\ListViewPage.baml
+C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\AddEditPage.g.cs
+C:\Users\fanaf\Desktop\Подготовка\obj\Debug\Pages\AddEditPage.baml

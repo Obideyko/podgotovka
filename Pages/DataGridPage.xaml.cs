@@ -28,12 +28,12 @@ namespace ProjectPodgotovka.Pages
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage((sender as Button).DataContext as Emloyees));
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.MainFrame.Navigate(new AddEditPage(null));
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
@@ -44,6 +44,15 @@ namespace ProjectPodgotovka.Pages
         private void ListBtn_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new ListViewPage());
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                PodgotovkaBaseEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGEmployees.ItemsSource = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+            }
         }
     }
 }

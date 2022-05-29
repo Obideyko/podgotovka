@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ProjectPodgotovka.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DataGridPage">
+      Title="DataGridPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
