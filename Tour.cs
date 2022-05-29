@@ -21,13 +21,5 @@ namespace ProjectPodgotovka
         public byte[] ImagePreview { get; set; }
         public decimal Price { get; set; }
         public bool IsActual { get; set; }
-
-        public string ActualText
-        {
-            get
-            {
-                return IsActual ? "Актуален" : "Завершён";
-            }
-        }
     }
 }

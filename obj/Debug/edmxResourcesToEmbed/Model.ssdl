@@ -9,6 +9,7 @@
     <Property Name="Age" Type="int" Nullable="false" />
     <Property Name="Birthday" Type="date" Nullable="false" />
     <Property Name="id_roles" Type="int" Nullable="false" />
+    <Property Name="IsActual" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>

@@ -39,6 +39,7 @@
     <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="id_roles" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Roles" Relationship="PodgotovkaBaseModel.FK_Emloyees_Roles" FromRole="Emloyees" ToRole="Roles" />
+    <Property Name="IsActual" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>

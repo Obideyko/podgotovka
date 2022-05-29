@@ -20,10 +20,15 @@ namespace ProjectPodgotovka.Pages
     /// </summary>
     public partial class DataGridPage : Page
     {
+        public class Global
+        {
+            public string sum;
+        }
         public DataGridPage()
         {
             InitializeComponent();
-            DGEmployees.ItemsSource = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+            var _currentEmployees = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+            DGEmployees.ItemsSource = _currentEmployees.Where(u => u.IsActual == true).ToList();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -38,7 +43,23 @@ namespace ProjectPodgotovka.Pages
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var forRemoving = DGEmployees.SelectedItems.Cast<Emloyees>().ToList();
+            if(MessageBox.Show($"Выдействительно хотите удалить след. {forRemoving.Count()} элементов?", "Внимание!",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    PodgotovkaBaseEntities.GetContext().Emloyees.RemoveRange(forRemoving);
+                    PodgotovkaBaseEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Successfully");
+                    var _currentEmployees = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+                    DGEmployees.ItemsSource = _currentEmployees.Where(u => u.IsActual == true).ToList();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
 
         private void ListBtn_Click(object sender, RoutedEventArgs e)
@@ -51,7 +72,30 @@ namespace ProjectPodgotovka.Pages
             if(Visibility == Visibility.Visible)
             {
                 PodgotovkaBaseEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGEmployees.ItemsSource = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+                var _currentEmployees = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+                DGEmployees.ItemsSource = _currentEmployees.Where(u => u.IsActual == true).ToList();
+            }
+        }
+
+        private void DBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var _currentEmployees = PodgotovkaBaseEntities.GetContext().Emloyees.ToList();
+            Emloyees employees = (sender as Button).DataContext as Emloyees;
+
+             if(MessageBox.Show("Вы действительно хотите удаль следующий элемент?", "Внимание!",
+                 MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    employees.IsActual = false;
+                    PodgotovkaBaseEntities.GetContext().SaveChanges();
+                    MessageBox.Show("Successfully");
+                    DGEmployees.ItemsSource = _currentEmployees.Where(u => u.IsActual == true).ToList();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
             }
         }
     }

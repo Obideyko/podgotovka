@@ -14,6 +14,7 @@
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="Birthday" Type="date" Nullable="false" />
           <Property Name="id_roles" Type="int" Nullable="false" />
+          <Property Name="IsActual" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -118,6 +119,7 @@
           <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="id_roles" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="PodgotovkaBaseModel.FK_Emloyees_Roles" FromRole="Emloyees" ToRole="Roles" />
+          <Property Name="IsActual" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -180,6 +182,7 @@
           <EntitySetMapping Name="Emloyees">
             <EntityTypeMapping TypeName="PodgotovkaBaseModel.Emloyees">
               <MappingFragment StoreEntitySet="Emloyees">
+                <ScalarProperty Name="IsActual" ColumnName="IsActual" />
                 <ScalarProperty Name="id_roles" ColumnName="id_roles" />
                 <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Age" ColumnName="Age" />

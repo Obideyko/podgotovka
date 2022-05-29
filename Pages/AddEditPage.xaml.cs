@@ -20,7 +20,9 @@ namespace ProjectPodgotovka.Pages
     /// </summary>
     public partial class AddEditPage : Page
     {
+#pragma warning disable IDE0044 // Добавить модификатор только для чтения
         private Emloyees _currentemloyees = new Emloyees();
+#pragma warning restore IDE0044 // Добавить модификатор только для чтения
 
         public AddEditPage(Emloyees selectedemployees)
         {

@@ -19,6 +19,7 @@ namespace ProjectPodgotovka
         public int Age { get; set; }
         public System.DateTime Birthday { get; set; }
         public int id_roles { get; set; }
+        public bool IsActual { get; set; }
     
         public virtual Roles Roles { get; set; }
     }
