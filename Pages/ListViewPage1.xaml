@@ -1,0 +1,56 @@
+﻿<Page x:Class="ProjectPodgotovka.Pages.ListViewPage1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ProjectPodgotovka.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListViewPage1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="BackBtn" Content="Back" Click="BackBtn_Click" Grid.Row="0"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBox x:Name="SearchTB" TextChanged="SearchTB_TextChanged" Width="175" Height="26"/>
+            <CheckBox x:Name="ActualCheck" Checked="ActualCheck_Checked" Unchecked="ActualCheck_Checked" VerticalAlignment="Center" Content="Только актуальные туры"/>
+        </StackPanel>
+        <ListView Grid.Row="2" Name="LViewTour">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="5" Width="250">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Image Width="100" Margin="2" Grid.Row="1" HorizontalAlignment="Center">
+                            <Image.Source>
+                                <Binding Path="ImagePreview">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/Resource/picture.png</ImageSource> 
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Grid.Row="0" Text="{Binding Name}" FontSize="26" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                        <TextBlock Grid.Row="2" Text="{Binding Price, StringFormat={}{0:N2} rubley}" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="3" Text="{Binding TicketsCount, StringFormat=Билетов осталось: {0}}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+                        <TextBlock Grid.Row="3" Text="{Binding ActualeText}" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
